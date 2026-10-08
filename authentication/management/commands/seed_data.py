@@ -13,6 +13,17 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.stdout.write(self.style.NOTICE('Seeding demo healthcare data...'))
 
+        # Create or update superuser
+        admin_user, _ = User.objects.get_or_create(
+            email='admin@healthcare.com',
+            defaults={'name': 'Super Admin', 'is_staff': True, 'is_superuser': True}
+        )
+        admin_user.set_password('AdminPassword123!')
+        admin_user.is_staff = True
+        admin_user.is_superuser = True
+        admin_user.save()
+        self.stdout.write(self.style.SUCCESS(f'Admin user ready: {admin_user.email}'))
+
         # Create or update demo users
         user1, created = User.objects.get_or_create(
             email='dr.john@healthcare.com',

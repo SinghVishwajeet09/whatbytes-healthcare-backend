@@ -143,8 +143,9 @@ Populate the database with demo users, doctors, patients, and mappings:
 python manage.py seed_data
 ```
 **Sample credentials created by seeder:**
-- User 1: `dr.john@healthcare.com` / `Password123!`
-- User 2: `nurse.mary@healthcare.com` / `Password123!`
+- **Superuser (Admin Panel)**: `admin@healthcare.com` / `AdminPassword123!`
+- **User 1 (Doctor)**: `dr.john@healthcare.com` / `Password123!`
+- **User 2 (Nurse)**: `nurse.mary@healthcare.com` / `Password123!`
 
 ### 7. Run the Development Server
 ```bash
